@@ -9,10 +9,10 @@ import (
 )
 
 const (
-	// ASCII is ASCII encoding
-	ASCII = iota
 	// BINARY encoding
-	BINARY
+	BINARY = iota
+	// ASCII is ASCII encoding
+	ASCII
 )
 
 type lengthFieldBasedFrameConn struct {
