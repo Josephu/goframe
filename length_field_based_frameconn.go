@@ -100,6 +100,9 @@ func (fc *lengthFieldBasedFrameConn) getUnadjustedFrameLength() (lenBuf []byte, 
 	if fc.decoderConfig.Format == ASCII {
 		lenBuf := make([]byte, fc.decoderConfig.LengthFieldLength)
 		_, err = fc.r.Read(lenBuf)
+		if err != nil {
+			return nil, 0, err
+		}
 		i, err := strconv.ParseUint(string(lenBuf), 10, 64)
 		if err != nil {
 			return nil, 0, err
